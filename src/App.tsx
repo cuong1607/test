@@ -2,6 +2,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SearchOutlined,
+  UploadOutlined,
 } from "@ant-design/icons";
 import { PageHeader } from "@ant-design/pro-layout";
 import { Button, Card, Image, Layout } from "antd";
@@ -15,22 +16,19 @@ import TableComponent from "./components/TableComponent";
 import { columns } from "./components/TableComponent/Column.config";
 import SideBar from "./layout/SideBar";
 import { Services } from "./services";
+import UserInfo from "./components/UserInfo";
 const { Header, Footer, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  color: "#fff",
-  height: 64,
-  paddingInline: 50,
-  lineHeight: "64px",
-  backgroundColor: "#7dbcea",
+  backgroundColor: "#336ba1",
+  display: "flex",
+  color: "#ffff",
+  justifyContent: "end",
 };
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
-  minHeight: 120,
-  height: "100%",
-  lineHeight: "120px",
+  height: "90%",
   color: "#fff",
   backgroundColor: "#ffff",
   padding: "5px",
@@ -42,12 +40,15 @@ const siderStyle: React.CSSProperties = {
   color: "#fff",
   backgroundColor: "#002447",
   overflowY: "scroll",
+  maxWidth: "300px",
+  width: "300px",
 };
 
 const footerStyle: React.CSSProperties = {
   textAlign: "center",
   color: "#002447",
-  height: "300px",
+  height: "200px",
+  padding: 0,
 };
 const initFilter = {};
 const App: React.FC = () => {
@@ -73,7 +74,7 @@ const App: React.FC = () => {
   return (
     <Layout style={{ width: "100%", height: "100vh" }}>
       <Layout hasSider>
-        <Sider style={siderStyle}>
+        <SiderStyled>
           <div
             style={{
               height: "64px",
@@ -81,6 +82,7 @@ const App: React.FC = () => {
               display: "flex",
               justifyContent: "space-evenly",
               alignItems: "center",
+              background: "#336ba1",
             }}
           >
             <Button
@@ -102,15 +104,20 @@ const App: React.FC = () => {
             </div>
           </div>
           <SideBar collapsed={collapsed} />
-        </Sider>
+        </SiderStyled>
         <div style={{ width: "100%" }}>
-          <Header style={headerStyle}>Header Banner</Header>
+          <Header style={headerStyle}>
+            <UserInfo />
+          </Header>
           <Content style={contentStyle}>
-            <PageHeaderStyled title="Payroll services in bank" />
+            <PageHeaderStyled
+              title="Payroll services in bank"
+              extra={<Button icon={<UploadOutlined />}>Upload File</Button>}
+            />
             <CardStyled
               title={<Filter returnFilter={returnFilter} key="filter" />}
               bordered={false}
-              style={{ width: "100%", height: "75%" }}
+              style={{ width: "100%", height: "80%" }}
               extra={<Button icon={<SearchOutlined />}>Search</Button>}
             >
               <TableComponent
@@ -155,6 +162,10 @@ const PageHeaderStyled = styled(PageHeader)`
   border-radius: 10px;
   margin-bottom: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 2px 2px 8px 2px;
+`;
+const SiderStyled = styled(Sider)`
+  height: 100%;
+  width: 300px;
 `;
 
 export default App;

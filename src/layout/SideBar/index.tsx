@@ -80,12 +80,19 @@ interface IProps {
 const SideBar = (props: IProps) => {
   const { collapsed } = props;
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "scroll",
+        background: "#ffff",
+      }}
+    >
       <Menu
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["1"]}
         mode="inline"
-        theme="dark"
+        theme="light"
         inlineCollapsed={true}
         items={items}
       />

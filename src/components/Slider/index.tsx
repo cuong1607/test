@@ -1,49 +1,69 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import banner1 from "../../assets/images/banner1.jpg";
-import banner2 from "../../assets/images/banner2.png";
-import banner3 from "../../assets/images/banner4.jpg";
-import banner4 from "../../assets/images/banner5.png";
+import banner11 from "../../assets/images/banner11.jpg";
 
 // Import Swiper styles
-import "swiper/css";
 import { Image } from "antd";
+import styled from "styled-components";
+import "swiper/css";
 
 const SliderComponent = () => {
   return (
     <>
-      <Swiper
+      <SwiperStyled
         spaceBetween={50}
         slidesPerView={1}
+        style={{ width: "100%" }}
         autoplay={{
           delay: 500,
           disableOnInteraction: false,
         }}
         onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper: any) => console.log(swiper)}
       >
-        <SwiperSlide>
-          <div style={{ background: "violet", width: "100%", height: "200px" }}>
-            Foodter1
-          </div>
+        <SwiperSlide style={{ width: "100%" }}>
+          <ImageStyled
+            style={{ height: "100px", width: "100%" }}
+            src={banner11}
+            preview={false}
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ background: "violet", width: "100%", height: "200px" }}>
-            Foodter2
-          </div>
+        <SwiperSlide style={{ width: "100%" }}>
+          <ImageStyled
+            style={{ height: "100px", width: "100%" }}
+            src={banner11}
+            preview={false}
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ background: "violet", width: "100%", height: "200px" }}>
-            Foodter3
-          </div>
+        <SwiperSlide style={{ width: "100%" }}>
+          <ImageStyled
+            style={{ height: "100px", width: "100%" }}
+            src={banner11}
+            preview={false}
+          />
         </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ background: "violet", width: "100%", height: "200px" }}>
-            Foodter4
-          </div>
+        <SwiperSlide style={{ width: "100%" }}>
+          <ImageStyled
+            style={{ height: "100px", width: "100%" }}
+            src={banner11}
+            preview={false}
+          />
         </SwiperSlide>
-      </Swiper>
+      </SwiperStyled>
     </>
   );
 };
+
+const SwiperStyled = styled(Swiper)`
+  & .swiper-slide {
+    width: 100% !important;
+    & .ant-image {
+      width: 100%;
+    }
+  }
+`;
+const ImageStyled = styled(Image)`
+  & .css-dev-only-do-not-override-3mqfnx {
+    width: 100% !important;
+  }
+`;
 
 export default SliderComponent;
